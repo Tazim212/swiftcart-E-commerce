@@ -50,7 +50,7 @@ const displayProduct = (products) => {
           </h2>
           <p class ="font-bold text-xl">$ ${product.price}</p>
         <div class ="flex justify-center items-center gap-2.5 mx-3">
-        <button class ="btn w-32"><i class="fa-solid fa-eye"></i> <span>Details</span></button>
+        <button onclick ='loadDetail(${product.id})' class ="btn w-32"><i class="fa-solid fa-eye"></i> <span>Details</span></button>
         <button class ="btn btn-primary w-32"><i class="fa-solid fa-cart-shopping"></i> <span>Add</span></button>
         </div>
       </div>
@@ -69,9 +69,31 @@ document.getElementById('see-button').addEventListener('click', () =>{
     this.style.display = 'none';
 })
 
+const loadDetail = (id) =>{
+    const url = `https://fakestoreapi.com/products/${id}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => showDetail(data))
+}
 
+const showDetail = (details) =>{
+    const detailContainer = document.getElementById('detail-container')
 
-
-
+    detailContainer.innerHTML = `
+             <div class="card-body">
+                <h2 class="card-title font semibold text-2xl">${details.title}</h2>
+                <p>${details.description}</p>
+                <p class ="text-xl font-bold">$ ${details.price}</p>
+            <div class ="flex justify-around items-center gap-8">
+           <i class="fa-solid fa-star text-yellow-400"><span class="ps-1.5 text-xs text-black">${details.rating.rate}</span></i>
+           <p>(${details.rating.count})</p>
+           </div>
+            <div class="card-actions justify-start pt-3">
+                <button class="btn btn-accent">Buy Now</button>
+            </div>
+           </div> 
+    `
+    document.getElementById("my_modal_5").showModal();
+}
 
 loadAllProduct()

@@ -124,14 +124,56 @@
         <section class="mx-16">
             <h2 class="font-bold text-3xl">Trending Now</h2>
             <div id="product-container" class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-10"></div>
-            <button id="see-button" class="btn btn-outline mt-7 mx-auto">See more</button>
+            <div class="flex justify-center">
+                <button id="see-button" class="btn btn-outline btn-accent my-7 mx-auto">See more</button>
+            </div>
         </section>
+
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box rounded-xl">
+                <div id="detail-container" class="space-y-5 bg-sky-200 rounded-xl">
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </main>
 
-    <footer>
+    <footer class="footer sm:footer-horizontal bg-slate-700 text-white p-10">
+        <div class="w-1/2">
+            <h2 class="text-2xl font-bold text-blue-300 text-center">SwiftCart</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod, molestias.</p>
+        </div>
+
+        <nav>
+            <h6 class="footer-title">Quick Links</h6>
+            <a class="link link-hover">Home</a>
+            <a class="link link-hover">Products</a>
+            <a class="link link-hover">About</a>
+            <a class="link link-hover">Contact</a>
+        </nav>
+        <nav>
+            <h6 class="footer-title">Legal</h6>
+            <a class="link link-hover">Terms of use</a>
+            <a class="link link-hover">Privacy policy</a>
+            <a class="link link-hover">Cookie policy</a>
+        </nav>
+        <form>
+            <h6 class="footer-title">Newsletter</h6>
+            <fieldset class="w-80">
+                <label>Enter your email address</label>
+                <div class="join">
+                    <input type="text" placeholder="username@site.com" class="input input-bordered join-item" />
+                    <button class="btn btn-primary join-item">Subscribe</button>
+                </div>
+            </fieldset>
+        </form>
 
     </footer>
-
+    <!-- copyright info, social links, and quick links. -->
 
     <script src="./script/index.js"></script>
 
