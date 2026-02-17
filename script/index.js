@@ -5,18 +5,16 @@ const loadAllProduct = () => {
         .then(data => displayProduct(data))
 }
 
-// {
-//     "id": 1,
-//     "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-//     "price": 109.95,
-//     "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-//     "category": "men's clothing",
-//     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-//     "rating": {
-//         "rate": 3.9,
-//         "count": 120
-//     }
-// }
+const loadSpinner = (status) =>{
+    if(status){
+        document.getElementById('spinner').classList.remove('hidden')
+        document.getElementById('product-container').classList.add('hidden')
+    }
+    else {
+        document.getElementById('product-container').classList.remove('hidden')
+        document.getElementById('spinner').classList.add('hidden')
+    }
+}
 
 const displayProduct = (products) => {
     const productContainer = document.getElementById('product-container');
@@ -59,17 +57,11 @@ const displayProduct = (products) => {
 
     productContainer.appendChild(productCard)
     })
+    loadSpinner(false)
 }
 
-document.getElementById('see-button').addEventListener('click', () =>{
-    const seeMore = document.querySelectorAll('.extra');
-    seeMore.forEach((card) =>{
-        card.classList.remove('hidden')
-    })
-    this.style.display = 'none';
-})
-
 const loadDetail = (id) =>{
+    loadSpinner(false)
     const url = `https://fakestoreapi.com/products/${id}`;
     fetch(url)
     .then(res => res.json())
